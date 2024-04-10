@@ -1,24 +1,30 @@
 def banner():
 	display_banner = """
 	Welcome to the NMC Assistance Framework.
+
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Instructions:
-	Make your selection at the prompts when requested,
+	Make your selection at the prompts when requested
+	"""
+	print(display_banner)
+
+def user_choice():
+	second_banner = """
+	Main Menu
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Please select from the following: 
 	[1] - Incoming phone calls
 	[2] - Jupiter 1 and 2 issues
 	[3] - Jupiter 3 and FUSION issues
 	[4] - KU issues
-	[5] - Email template generator 
+	[5] - Email template generator
+	[6] - IGT and XCI 
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Type 'exit' to exit program. 
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	"""
-	print(display_banner)
-
-def user_choice():
-	selection = input("-> What is your selection [1 - 2 - 3 - 4 - 5 - 'exit']: ")
+	print(second_banner)
+	selection = input("-> What is your selection : ")
 	if selection.lower() == 'exit':
 		return None
 	else:
@@ -27,22 +33,24 @@ def user_choice():
 def phone_calls():
 	phone_instruct = """
 	Gather the following:
-	The name of the caller and where are they calling from? [ex: John from FSS]
-	The SAN or SID of the device with the issue. (SAN = Jupiter; SID = KU)
-	The SERIAL number for the device OR device(s)
+	-The name of the caller and where are they calling from? [ex: John from FSS]
+	-The SAN or SID of the device with the issue. (SAN = Jupiter; SID = KU)
+	-The SERIAL number for the device OR device(s)
+	-WHAT is the issue that is occuring? WHAT steps have been taken so far?
+	-Single site calls may have STATE CODES or NMS CODES.
+	-Create a ticket based on the provided information, then escalate to the 
+	proper resources (CNE-GW, FUSION, SDG_Support, NLV, Etc.)
 	"""
 	print(phone_instruct) 
 
-def jupiter_issues():
+def jupiter1and2_issues():
 	while True:
 		jupiter_banner = """
 		~~~
-		Jupiter Issues: 
+		Jupiter Issues Submenu: 
 		[a] - Single site call
 		[b] - Terminal Drops
-		[c] - 
-		[d] -
-		exit - exit Jupiter Issues Menu
+		exit - exit Jupiter Issues Submenu
 		"""
 		print(jupiter_banner)
 		choice = input("-> Jupiter Issues --> Your selection: ")
@@ -50,6 +58,54 @@ def jupiter_issues():
 			break
 		else:
 			print(f"Processing Jupiter Issue : {choice}")
+
+def jupiter3_issues():
+	while True:
+		jupiter3_banner = """
+		~~~
+		Jupiter 3 Issues Submenu: 
+		[a] - Single site call
+		[b] - Terminal Drops
+		exit - exit Jupiter 3 Issues Submenu
+		"""
+		print(jupiter3_banner)
+		choice = input("-> Jupiter 3 Issues --> Your selection: ")
+		if choice.lower() == 'exit':
+			break
+		else:
+			print(f"Processing Jupiter 3 Issue : {choice}")
+
+def ku_issues():
+	while True:
+		ku_banner = """
+		~~~
+		KU Issues Submenu: 
+		[a] - Single site call
+		[b] - Timing and power
+		exit - exit KU Issues Submenu
+		"""
+		print(ku_banner)
+		choice = input("-> KU Issues --> Your selection: ")
+		if choice.lower() == 'exit':
+			break
+		else:
+			print(f"Processing KU Issue : {choice}")
+
+def igt_issues():
+	while True:
+		igt_banner = """
+		~~~
+		IGT and XCI Issues Submenu: 
+		[a] - IGT issue?
+		[b] - XCI issue?
+		exit - exit IGT/XCI Issues Submenu
+		"""
+		print(igt_banner)
+		choice = input("-> IGT/XCI Issues --> Your selection: ")
+		if choice.lower() == 'exit':
+			break
+		else:
+			print(f"Processing IGT/XCI Issue : {choice}")
 
 def emailer():
 	email_banner = """
@@ -102,10 +158,16 @@ def main():
 		elif choice == 1:
 			phone_calls()
 		elif choice == 2:
-			jupiter_issues()
+			jupiter1and2_issues()
+		elif choice == 3:
+			jupiter3_issues()
+		elif choice == 4:
+			ku_issues()
 		elif choice == 5:
-			print(emailer)
+			emailer()
 			template()
+		elif choice == 6:
+			igt_issues()
 		else:
 			print("Processing bases on your choice -> ", choice)
 
