@@ -18,7 +18,8 @@ def user_choice():
 	[3] - Jupiter 3 and FUSION issues
 	[4] - KU issues
 	[5] - Email template generator
-	[6] - IGT and XCI 
+	[6] - IGT and XCI
+	[7] - ESCALATION PATHS 
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Type 'exit' to exit program. 
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -39,7 +40,7 @@ def phone_calls():
 	-WHAT is the issue that is occuring? WHAT steps have been taken so far?
 	-Single site calls may have STATE CODES or NMS CODES.
 	-Create a ticket based on the provided information, then escalate to the 
-	proper resources (CNE-GW, FUSION, SDG_Support, NLV, Etc.)
+	proper resources (CNE-GW, FUSION, SDG_Support, NLV, Etc.),
 	"""
 	print(phone_instruct) 
 
@@ -56,6 +57,10 @@ def jupiter1and2_issues():
 		choice = input("-> Jupiter Issues --> Your selection: ")
 		if choice.lower() == 'exit':
 			break
+		elif choice.lower() == 'a':
+			print(f"\n --> {choice} - Single site")
+		elif choice.lower() == 'b':
+			print(f"\n --> {choice} - Terminal Drops")
 		else:
 			print(f"Processing Jupiter Issue : {choice}")
 
@@ -72,6 +77,10 @@ def jupiter3_issues():
 		choice = input("-> Jupiter 3 Issues --> Your selection: ")
 		if choice.lower() == 'exit':
 			break
+		elif choice.lower() == 'a':
+			print(f"\n --> {choice} - Single site")
+		elif choice.lower() == 'b':
+			print(f"\n --> {choice} - Terminal Drops")
 		else:
 			print(f"Processing Jupiter 3 Issue : {choice}")
 
@@ -80,14 +89,21 @@ def ku_issues():
 		ku_banner = """
 		~~~
 		KU Issues Submenu: 
-		[a] - Single site call
+		[a] - Enterprise
 		[b] - Timing and power
+		[c] - VSAT down/Outage
 		exit - exit KU Issues Submenu
 		"""
 		print(ku_banner)
 		choice = input("-> KU Issues --> Your selection: ")
 		if choice.lower() == 'exit':
 			break
+		elif choice.lower() == 'a':
+			print(f"\n --> {choice} - Enterprise")
+		elif choice.lower() == 'b':
+			print(f"\n --> {choice} - Timing and Power")
+		elif choice.lower() == 'c':
+			print(f"\n --> {choice} - VSAT down/Outage")
 		else:
 			print(f"Processing KU Issue : {choice}")
 
@@ -104,6 +120,10 @@ def igt_issues():
 		choice = input("-> IGT/XCI Issues --> Your selection: ")
 		if choice.lower() == 'exit':
 			break
+		elif choice.lower() == 'a':
+			print(f"\n --> {choice} - IGT Issues")
+		elif choice.lower() == 'b':
+			print(f"\n --> {choice} - XCI Issues")
 		else:
 			print(f"Processing IGT/XCI Issue : {choice}")
 
@@ -148,6 +168,44 @@ def template():
 		else:
 			print(f"Processing Jupiter Issue : {choice}")
 
+def escalations():
+	while True:
+		escalations_banner = """
+		~~~
+		Escalation Path Submenu: 
+		[a] - SDG_Support
+		[b] - CNE_Team
+		[c] - NI
+		[d] - ESE
+		[d] - EDSE
+		exit - exit Escalations Path Submenu
+		"""
+		print(escalations_banner)
+		choice = input("-> Escalations Issues --> Your selection: ")
+		if choice.lower() == 'exit':
+			break
+		elif choice.lower() == 'a':
+			print(f"\n --> {choice} - SDG Support")
+			print("\n -Call 1(866)245-7059 for first tier.")
+			print("\n -Call 1(831)402-5408 for escalations.")
+			print("\n -Call Babu 1(240)328-8946 if all else fails ")
+		elif choice.lower() == 'b':
+			print(f"\n --> {choice} - CNE Team")
+			print("\n -Gateway Engineers -> Dial ext:4140")
+			print("\n -Aero Engineers -> Dial ext:4160")
+			print("\n -All others -> Dial ext:5998, then follow the prompts")
+		elif choice.lower() == 'c':
+			print(f"\n --> {choice} - NI Team")
+			print("\n Network Infrastructure -> Call centers are different based on time of day")
+			print("\n -> From 0900 - 2100 hours EST - call ext:5809")
+			print("\n -> From 2100 - 0900 hours EST - call ext:3972")
+		elif choice.lower() == 'd':
+			print(f"\n --> {choice} - ESE Team")
+		elif choice.lower() == 'e':
+			print(f"\n --> {choice} - EDSE Team")
+		else:
+			print(f"Processing Escalation Path : {choice}")
+
 def main():
 	banner()
 	while True:
@@ -168,6 +226,8 @@ def main():
 			template()
 		elif choice == 6:
 			igt_issues()
+		elif choice == 7:
+			escalations()
 		else:
 			print("Processing bases on your choice -> ", choice)
 
