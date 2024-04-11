@@ -1,3 +1,4 @@
+############################################################### Intro Banner Only.
 def banner():
 	display_banner = """
 	Welcome to the NMC Assistance Framework.
@@ -7,7 +8,7 @@ def banner():
 	Make your selection at the prompts when requested
 	"""
 	print(display_banner)
-
+############################################################### Main menu - User choice.
 def user_choice():
 	second_banner = """
 	Main Menu
@@ -30,7 +31,7 @@ def user_choice():
 		return None
 	else:
 		return int(selection) 
-
+############################################################### Submenu - Incoming Phone calls.
 def phone_calls():
 	phone_instruct = """
 	Gather the following:
@@ -43,7 +44,7 @@ def phone_calls():
 	proper resources (CNE-GW, FUSION, SDG_Support, NLV, Etc.),
 	"""
 	print(phone_instruct) 
-
+############################################################### Submenu - Jupiter 1 and 2 Issues. 
 def jupiter1and2_issues():
 	while True:
 		jupiter_banner = """
@@ -51,19 +52,38 @@ def jupiter1and2_issues():
 		Jupiter Issues Submenu: 
 		[a] - Single site call
 		[b] - Terminal Drops
+		[c] - BGP Peers
+		[d] - Move Allows
 		exit - exit Jupiter Issues Submenu
 		"""
 		print(jupiter_banner)
 		choice = input("-> Jupiter Issues --> Your selection: ")
 		if choice.lower() == 'exit':
 			break
-		elif choice.lower() == 'a':
+		elif choice.lower() == 'a': 	##########Single site calls
 			print(f"\n --> {choice} - Single site")
-		elif choice.lower() == 'b':
+		elif choice.lower() == 'b':		##########Terminal Drops
 			print(f"\n --> {choice} - Terminal Drops")
+		elif choice.lower() == 'c':		##########BGP Peering
+			print(f"\n --> {choice} - BGP Peering Issues")
+			print(" Within SL1, note the interface and BGP neighbour")
+			print(" If the link is a backbone link to a carrier ISP,")
+			print(" then escalate to the appropriate carrier\n")
+			print(" Level3|CenturyLink|Lumen - Login portal")
+			print(" -> controlcenter.lumen.com/enterprise/dashboard\n")
+			print("  --> hnnmcescalations:HughesNMC1234")
+			print("```")
+			print("Verizon - Login Portal")
+			print(" -> enterprise.verizon.com/public/index.html#/repairsqf/tickets/find\n")
+			print("  --> PIN: JEF")
+			print("```")
+			print("\nGTT Communitcation - Login Portal")
+			print(" -> ethervision.gtt.net/sign-in\n")
+			print("  --> hnnmmcescalations@hughes.com:HughesGTown02")
+			print("```")
 		else:
 			print(f"Processing Jupiter Issue : {choice}")
-
+############################################################### Submenu - Jupiter 3 Issues.
 def jupiter3_issues():
 	while True:
 		jupiter3_banner = """
@@ -71,6 +91,7 @@ def jupiter3_issues():
 		Jupiter 3 Issues Submenu: 
 		[a] - Single site call
 		[b] - Terminal Drops
+		[c] - Terminal Move Allows
 		exit - exit Jupiter 3 Issues Submenu
 		"""
 		print(jupiter3_banner)
@@ -78,12 +99,19 @@ def jupiter3_issues():
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a':
-			print(f"\n --> {choice} - Single site")
+			print(f"\n --> {choice} - Single site\n")
 		elif choice.lower() == 'b':
-			print(f"\n --> {choice} - Terminal Drops")
+			print(f"\n --> {choice} - Terminal Drops\n")
+		elif choice.lower() == 'c':
+			print(f"\n --> {choice} - Terminal Move Allows\n")
+			print(f"Open Putty and 'ssh' into 172.16.193.11\n")
+			print(f"Login: nmcuser:nmcuser123!@#\n")
+			print(f"Type: './MoveAllowed.sh <DEVICE SAN>' then execute the script.\n")
+			print(f"Enter your Jupiter 3 Username and Passwords when prompted.")
+			print(f"A successful Move allow will state that the 'CTS for <DEVICE SAN> processed successfully.'")
 		else:
 			print(f"Processing Jupiter 3 Issue : {choice}")
-
+############################################################### Submenu - KU Issues.
 def ku_issues():
 	while True:
 		ku_banner = """
@@ -106,7 +134,7 @@ def ku_issues():
 			print(f"\n --> {choice} - VSAT down/Outage")
 		else:
 			print(f"Processing KU Issue : {choice}")
-
+############################################################### Submenu - IGT and XCI Issues.
 def igt_issues():
 	while True:
 		igt_banner = """
@@ -126,21 +154,21 @@ def igt_issues():
 			print(f"\n --> {choice} - XCI Issues")
 		else:
 			print(f"Processing IGT/XCI Issue : {choice}")
-
+############################################################### Submenu - Email Instruction Banner Only.
 def emailer():
 	email_banner = """
 	----------------------
 	Generic Email Template
 	======================
 	Instructions:
-	(1) Enter the Salesforce case # (If generated, else press 'Enter'),
+	(1) Enter the Salesforce case # (If generated, if none, press 'Enter'),
 	(2) Enter the TEAM to contact (CNE-GW, SDG_Support, NI, Etc.)
-	(3) Enter the DEVICE affected (J2ALB047HPAIGW1104, j3yumpr01host01, Etc.)
-	(4) Enter the ALARM (Swap utilization, Critical Pings, GW Terminal Drops, Etc.)
+	(3) Paste the DEVICE affected (J2ALB047HPAIGW1104, j3yumpr01host01, Etc.)
+	(4) Paste the ALARM (Swap utilization, Critical Pings, GW Terminal Drops, Etc.)
 	This will generate a Subject line and a email body to send.
 	"""
 	print(email_banner)
-
+############################################################### Submenu - Email Template Generator
 def template():
 	while True:
 		ticket_num = input("-> Salesforce case number: ")
@@ -148,7 +176,7 @@ def template():
 		device_name = input("-> Device name that is alarming: ")
 		alarm_decription = input("-> Alarm Decription: ")
 	
-		email_subject = f"{ticket_num} - {device_name} - {alarm_decription}"
+		email_subject = f" {ticket_num} - {device_name} - {alarm_decription}"
 		email_body = (
 		f"Hello {team_name},\n\n"
 		f"This email is to provide visibility on {device_name}, which is currently alarming within SL1."
@@ -167,7 +195,7 @@ def template():
 			break
 		else:
 			print(f"Processing Jupiter Issue : {choice}")
-
+############################################################### Submenu - Escalation Path. 
 def escalations():
 	while True:
 		escalations_banner = """
@@ -188,15 +216,15 @@ def escalations():
 			print(f"\n --> {choice} - SDG Support")
 			print("\n -Call 1(866)245-7059 for first tier.")
 			print("\n -Call 1(831)402-5408 for escalations.")
-			print("\n -Call Babu 1(240)328-8946 if all else fails ")
+			print("\n -Call Babu 1(240)328-8946, if all else fails.")
 		elif choice.lower() == 'b':
 			print(f"\n --> {choice} - CNE Team")
 			print("\n -Gateway Engineers -> Dial ext:4140")
 			print("\n -Aero Engineers -> Dial ext:4160")
-			print("\n -All others -> Dial ext:5998, then follow the prompts")
+			print("\n -All others -> Dial ext:5998, then follow the prompts.")
 		elif choice.lower() == 'c':
 			print(f"\n --> {choice} - NI Team")
-			print("\n Network Infrastructure -> Call centers are different based on time of day")
+			print("\n Network Infrastructure -> Call centers are different based on time of day.")
 			print("\n -> From 0900 - 2100 hours EST - call ext:5809")
 			print("\n -> From 2100 - 0900 hours EST - call ext:3972")
 		elif choice.lower() == 'd':
@@ -205,7 +233,7 @@ def escalations():
 			print(f"\n --> {choice} - EDSE Team")
 		else:
 			print(f"Processing Escalation Path : {choice}")
-
+############################################################### Main Program
 def main():
 	banner()
 	while True:
@@ -230,7 +258,7 @@ def main():
 			escalations()
 		else:
 			print("Processing bases on your choice -> ", choice)
-
+############################################################### Init
 if __name__ == "__main__":
 	main()		
 
