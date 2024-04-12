@@ -62,6 +62,15 @@ def jupiter1and2_issues():
 			break
 		elif choice.lower() == 'a': 	##########Single site calls
 			print(f"\n --> {choice} - Single site")
+			print("\nYou are likely on a phone call....")
+			print("\nGather the following during this call: ")
+			print("The site SAN, and the SERIAL numbers of the terminal(s) -> There may be more than one")
+			print("Log into DSS (hns-unsername:PIN+RSA) and navigate the sidebar to 'Jupiter Dashboard'")
+			print("Select 'Jupiter Dashboard', then enter the SAN or the ESN of the site into DSS to gather more information,")
+			print("such as, Radio_ESN, Gateway_IDs, Beam_IDs for your ticket and for engineers")
+			print("Depending on what the Single site issue is, this will affect your escalation path")
+			print("Is the terminal stuck in activation stages? -> Escalate to CNE-NMS")
+			print("Is the terminal ")
 		elif choice.lower() == 'b':		##########Terminal Drops
 			print(f"\n --> {choice} - Terminal Drops")
 		elif choice.lower() == 'c':		##########BGP Peering
@@ -71,24 +80,24 @@ def jupiter1and2_issues():
 			print(" then escalate to the appropriate carrier\n")
 			print(" Level3|CenturyLink|Lumen - Login portal")
 			print(" -> controlcenter.lumen.com/enterprise/dashboard\n")
-			print("  --> hnnmcescalations:HughesNMC1234")
 			print("```")
 			print("Verizon - Login Portal")
 			print(" -> enterprise.verizon.com/public/index.html#/repairsqf/tickets/find\n")
-			print("  --> PIN: JEF")
 			print("```")
 			print("\nGTT Communitcation - Login Portal")
 			print(" -> ethervision.gtt.net/sign-in\n")
-			print("  --> hnnmmcescalations@hughes.com:HughesGTown02")
 			print("```")
 		else:
-			print(f"Processing Jupiter Issue : {choice}")
+			print(f"Processing Jupiter 1/2 Issue : {choice}")
 ############################################################### Submenu - Jupiter 3 Issues.
 def jupiter3_issues():
 	while True:
 		jupiter3_banner = """
 		~~~
 		Jupiter 3 Issues Submenu: 
+\n---> If tasked with a Jupiter 3 issue, IMMEDIATELY escalate to CNE-GW Engineers! <---
+              ---> This happens prior to ticket creation, FULL STOP! <---\n
+
 		[a] - Single site call
 		[b] - Terminal Drops
 		[c] - Terminal Move Allows
@@ -104,11 +113,11 @@ def jupiter3_issues():
 			print(f"\n --> {choice} - Terminal Drops\n")
 		elif choice.lower() == 'c':
 			print(f"\n --> {choice} - Terminal Move Allows\n")
-			print(f"Open Putty and 'ssh' into 172.16.193.11\n")
-			print(f"Login: nmcuser:nmcuser123!@#\n")
-			print(f"Type: './MoveAllowed.sh <DEVICE SAN>' then execute the script.\n")
-			print(f"Enter your Jupiter 3 Username and Passwords when prompted.")
-			print(f"A successful Move allow will state that the 'CTS for <DEVICE SAN> processed successfully.'")
+			print("Open Putty and 'ssh' into 172.16.193.11\n")
+			print("Login: nmcuser:nmcuser123!@#\n")
+			print("Type: './MoveAllowed.sh <DEVICE SAN>' then execute the script.\n")
+			print("Enter your Jupiter 3 Username and Passwords when prompted.")
+			print("A successful Move allow will state that the 'CTS for <DEVICE SAN> processed successfully.'")
 		else:
 			print(f"Processing Jupiter 3 Issue : {choice}")
 ############################################################### Submenu - KU Issues.
@@ -190,11 +199,11 @@ def template():
 		print(f"{email_subject}\n")
 		print(f"{email_body}")
 
-		choice = input("-> Email Template finished --> Type 'exit' to return to main menu: ")
+		choice = input("-> Email Template finished --> Type 'exit' to return to main menu, Press 'Enter' to process another email: ")
 		if choice.lower() == 'exit':
 			break
 		else:
-			print(f"Processing Jupiter Issue : {choice}")
+			print(f"Processing Email Template : {choice}")
 ############################################################### Submenu - Escalation Path. 
 def escalations():
 	while True:
@@ -204,8 +213,11 @@ def escalations():
 		[a] - SDG_Support
 		[b] - CNE_Team
 		[c] - NI
-		[d] - ESE
-		[d] - EDSE
+		[d] - ESE [ENOC]
+		[e] - EDSE
+		[f] - HNSec
+		[g] - HNSoc
+		[h] - NE
 		exit - exit Escalations Path Submenu
 		"""
 		print(escalations_banner)
@@ -222,15 +234,30 @@ def escalations():
 			print("\n -Gateway Engineers -> Dial ext:4140")
 			print("\n -Aero Engineers -> Dial ext:4160")
 			print("\n -All others -> Dial ext:5998, then follow the prompts.")
+			print("\n -Additional last option ext:5999")
 		elif choice.lower() == 'c':
 			print(f"\n --> {choice} - NI Team")
 			print("\n Network Infrastructure -> Call centers are different based on time of day.")
 			print("\n -> From 0900 - 2100 hours EST - call ext:5809")
 			print("\n -> From 2100 - 0900 hours EST - call ext:3972")
 		elif choice.lower() == 'd':
-			print(f"\n --> {choice} - ESE Team")
+			print(f"\n --> {choice} - ESE/ENOC Team")
+			print("\n -Primary ext:4143")
+			print("\n -Secondary ext:4144")
 		elif choice.lower() == 'e':
 			print(f"\n --> {choice} - EDSE Team")
+			print("\n -Primary ext:4110")
+			print("\n -Secondary ext:4111")
+		elif choice.lower() == 'f':
+			print(f"\n --> {choice} - HNSec Team")
+			print("\n -Primary ext:3688")
+		elif choice.lower() == 'g':
+			print(f"\n --> {choice} - HNSoc Team")
+			print("\n -Primary ext:2666")
+		elif choice.lower() == 'h':
+			print(f"\n --> {choice} - Network Engineering Team")
+			print("\n -Primary ext:6386")
+			print("\n -Secondary ext:6387")
 		else:
 			print(f"Processing Escalation Path : {choice}")
 ############################################################### Main Program
