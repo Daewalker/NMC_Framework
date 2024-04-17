@@ -21,6 +21,8 @@ def user_choice():
 	[5] - Email template generator
 	[6] - IGT and XCI
 	[7] - ESCALATION PATHS 
+	[8] - Tool login info
+	[9] - Event Summary | Site Access request
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Type 'exit' to exit program. 
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -101,6 +103,7 @@ def jupiter3_issues():
 		[a] - Single site call
 		[b] - Terminal Drops
 		[c] - Terminal Move Allows
+		[d] - HTTP | DNS Failures
 		exit - exit Jupiter 3 Issues Submenu
 		"""
 		print(jupiter3_banner)
@@ -118,6 +121,16 @@ def jupiter3_issues():
 			print("Type: './MoveAllowed.sh <DEVICE SAN>' then execute the script.\n")
 			print("Enter your Jupiter 3 Username and Passwords when prompted.")
 			print("A successful Move allow will state that the 'CTS for <DEVICE SAN> processed successfully.'")
+		elif choice.lower() == 'd':
+			print(f"\n --> {choice} - HTTP | DNS Failures\n")
+			print(" -Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
+			print(" -Browse to platform Jovian logging in with your creds.\n")
+			print(" -On the left hand sidebar, navigate to the platform affected,")
+			print(" -Select the 'GM' icon, locate your problem device likely an IGW,")
+			print(" -Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
+			print(" -Mgmt > Logs > CDT Log Display and select the log file.\n")
+			print(" -Analyze the log file for the FAILURE.")
+			print("\n  ---> DNS_FAILURES | HTTPS_IP6_FAILURE")
 		else:
 			print(f"Processing Jupiter 3 Issue : {choice}")
 ############################################################### Submenu - KU Issues.
@@ -260,7 +273,85 @@ def escalations():
 			print("\n -Secondary ext:6387")
 		else:
 			print(f"Processing Escalation Path : {choice}")
-############################################################### Main Program
+############################################################### Login info
+def login_info():
+	while True:
+		login_banner = """
+		~~~
+		Login info Submenu: 
+		[a] - Jupiter 1 and 2
+		[b] - Ku | Terrestrial
+		[c] - Jupiter 3
+		exit - exit Login Info Submenu
+		"""
+		print(login_banner)
+		choice = input("-> Login Info --> Your selection: ")
+		if choice.lower() == 'exit':
+			break
+		elif choice.lower() == 'a':
+			print(f"\n --> {choice} - Jupiter 1 abnd 2")
+			print(" ~~~Jupiter 1 and 2 Jovian~~~")
+			print(" username:PIN+RSA token")
+			print(" ~~~    NAD DSS   ~~~")
+			print(" hns-username:PIN+RSA")
+		elif choice.lower() == 'b':
+			print(f"\n --> {choice} - KU | Terrestrial")
+		elif choice.lower() == 'c':
+			print(f"\n --> {choice} - Jupiter 3")
+			print(" Your Assigned Jupiter3 username:password  ---> NOT PIN+RSA")
+		else:
+			print(f"Processing Login information request : {choice}")
+############################################################### Submenu - Site access requests and event summary
+def event_template():
+	while True:
+		event_type = input("-> Event Type [Outage, Degradation, Investigation]: ")
+		start_date = input("-> Event Start DATE: [12/12/23] format ")
+		start_time = int(input("-> Event Start TIME: [ex: 1200] format "))
+		end_time = int(input("-> Event End TIME: [ex: 1400] format "))
+		end_date = input("-> Event End DATE: [12/12/23] ")
+		service_type = input("-> Service Type: [Transport, Ordering, Management] ")
+		cust_affected = input("-> Customers Affected: [SHP, CEN, OXY] ")
+		sites_affected = input(" -> Number of sites affected: ")
+		alerts = input(" -> Alert method: [Customer called in, SL1] ")
+		summary = input(" -> What what the event summary?: [The NMC responded to alarms......] ")
+		root_cause = input(" -> What was the Root cause for this issue?: ")
+		sw_vers = input(" -> What was the software version?: ")	
+		
+		start_hour = start_time // 100
+		start_minute = start_time % 100
+		end_hour = end_time // 100
+		end_minute = end_time % 100
+		# Convert times to minutes
+		start_minutes = start_hour * 60 + start_minute
+		end_minutes = end_hour * 60 + end_minute
+		# Calculate duration in minutes
+		total_duration_minutes = end_minutes - start_minutes
+		# Convert total duration to hours and minutes
+		total_duration_hours = total_duration_minutes // 60
+		total_duration_minutes %= 60
+
+		event_body = (
+		f"Event Type: {event_type},\n"
+		f"Event Duration: {start_date} ({start_time}) - {end_date} ({end_time}), Duration: [{total_duration_hours}H:{total_duration_minutes}M] \n"
+		f"Type of Service: {service_type}, \n"
+		f"Customers Affected: {cust_affected}, \n"
+		f"Numbers of sites: {sites_affected}, \n"
+		f"Alerts: {alerts}, \n"
+		f"Event Summary: {summary}, \n"
+		f"Root Cause: {root_cause}, \n"
+		f"S/W Version: {sw_vers}, \n"
+		)
+		
+		print("\nEvent Summary Template\n\n")
+		print(f"{event_body}")
+
+		choice = input("-> Event Summary Template finished --> Type 'exit' to return to main menu, Press 'Enter' to process another event summary: ")
+		if choice.lower() == 'exit':
+			break
+		else:
+			print(f"Processing Event Summary Template : {choice}")
+
+############################################################### Main function
 def main():
 	banner()
 	while True:
@@ -283,6 +374,10 @@ def main():
 			igt_issues()
 		elif choice == 7:
 			escalations()
+		elif choice == 8:
+			login_info()
+		elif choice == 9:
+			event_template()
 		else:
 			print("Processing bases on your choice -> ", choice)
 ############################################################### Init
