@@ -1,18 +1,22 @@
+#!/bin/python3/venv .venv
+
 ############################################################### Intro Banner Only.
 def banner():
 	display_banner = """
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Welcome to the NMC Assistance Framework.
 
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Instructions:
 	Make your selection at the prompts when requested
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	"""
 	print(display_banner)
 ############################################################### Main menu - User choice.
 def user_choice():
 	second_banner = """
 	Main Menu
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Please select from the following: 
 	[1] - Incoming phone calls
 	[2] - Jupiter 1 and 2 issues
@@ -20,12 +24,12 @@ def user_choice():
 	[4] - KU issues
 	[5] - Email template generator
 	[6] - IGT and XCI
-	[7] - ESCALATION PATHS 
+	[7] - Escalation Paths 
 	[8] - Tool login info
 	[9] - Event Summary | Site Access request
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Type 'exit' to exit program. 
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	"""
 	print(second_banner)
 	selection = input("-> What is your selection : ")
@@ -50,13 +54,15 @@ def phone_calls():
 def jupiter1and2_issues():
 	while True:
 		jupiter_banner = """
-		~~~
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		Jupiter Issues Submenu: 
 		[a] - Single site call
 		[b] - Terminal Drops
 		[c] - BGP Peers
 		[d] - Move Allows
+		[e] - HTTP | DNS Failures
 		exit - exit Jupiter Issues Submenu
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(jupiter_banner)
 		choice = input("-> Jupiter Issues --> Your selection: ")
@@ -72,11 +78,16 @@ def jupiter1and2_issues():
 			print("such as, Radio_ESN, Gateway_IDs, Beam_IDs for your ticket and for engineers")
 			print("Depending on what the Single site issue is, this will affect your escalation path")
 			print("Is the terminal stuck in activation stages? -> Escalate to CNE-NMS")
-			print("Is the terminal ")
+			print("Is the terminal within FAP? -> Escalate to the SDG_Support Team")
 		elif choice.lower() == 'b':		##########Terminal Drops
 			print(f"\n --> {choice} - Terminal Drops")
+			print("Within the SL1 alarm, select the performance tab at the top of the window,")
+			print("Select the >Hughes Jupiter IGW menu and look for 'NumAsocTerminals'")
+			print("Note the number of terminals that are on the IPGW, should there be only a few registered Terminals on the IPGW")
+			print("Ask a senior collegue if the number of terminals on the GW is sufficent, if they are then ignore the alarm, if not create a  ticket and escalate")
 		elif choice.lower() == 'c':		##########BGP Peering
 			print(f"\n --> {choice} - BGP Peering Issues")
+			print("IF this is a Jupiter 3 alarm, check Ansible for circuit information, else continue....\n")
 			print(" Within SL1, note the interface and BGP neighbour")
 			print(" If the link is a backbone link to a carrier ISP,")
 			print(" then escalate to the appropriate carrier\n")
@@ -89,22 +100,33 @@ def jupiter1and2_issues():
 			print("\nGTT Communitcation - Login Portal")
 			print(" -> ethervision.gtt.net/sign-in\n")
 			print("```")
+		elif choice.lower() == 'd':
+			print(f"\n --> {choice} - Move Allow Requests\n")
+			print("Teleperformance SHOULD have the ability to perform these moves.")
+		elif choice.lower() == 'e':
+			print(f"\n --> {choice} - HTTP | DNS Failures\n")
+			print(" -Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
+			print(" -Browse to platform Jovian logging in with your creds.\n")
+			print(" -On the left hand sidebar, navigate to the platform affected,")
+			print(" -Select the 'GM' icon, locate your problem device likely an IGW,")
+			print(" -Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
+			print(" -Mgmt > Logs > CDT Log Display and select the log file.\n")
+			print(" -Analyze the log file for the FAILURE.")
+			print("\n  ---> DNS_FAILURES | HTTPS_IP6_FAILURE")	
 		else:
 			print(f"Processing Jupiter 1/2 Issue : {choice}")
 ############################################################### Submenu - Jupiter 3 Issues.
 def jupiter3_issues():
 	while True:
 		jupiter3_banner = """
-		~~~
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		Jupiter 3 Issues Submenu: 
-\n---> If tasked with a Jupiter 3 issue, IMMEDIATELY escalate to CNE-GW Engineers! <---
-              ---> This happens prior to ticket creation, FULL STOP! <---\n
-
 		[a] - Single site call
 		[b] - Terminal Drops
 		[c] - Terminal Move Allows
 		[d] - HTTP | DNS Failures
 		exit - exit Jupiter 3 Issues Submenu
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(jupiter3_banner)
 		choice = input("-> Jupiter 3 Issues --> Your selection: ")
@@ -112,6 +134,7 @@ def jupiter3_issues():
 			break
 		elif choice.lower() == 'a':
 			print(f"\n --> {choice} - Single site\n")
+			print("")
 		elif choice.lower() == 'b':
 			print(f"\n --> {choice} - Terminal Drops\n")
 		elif choice.lower() == 'c':
@@ -137,12 +160,14 @@ def jupiter3_issues():
 def ku_issues():
 	while True:
 		ku_banner = """
-		~~~
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		KU Issues Submenu: 
 		[a] - Enterprise
 		[b] - Timing and power
 		[c] - VSAT down/Outage
+		[d] - Decommission Requests
 		exit - exit KU Issues Submenu
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(ku_banner)
 		choice = input("-> KU Issues --> Your selection: ")
@@ -154,17 +179,25 @@ def ku_issues():
 			print(f"\n --> {choice} - Timing and Power")
 		elif choice.lower() == 'c':
 			print(f"\n --> {choice} - VSAT down/Outage")
+		elif choice.lower() == 'd':
+			print(f"\n --> {choice} - Decommission Requests")
+			print("Gather the SID and Serial numbers of the terminal that is to be decommissioned.")
+			print("Log into the corresonding Vision server via NOC_FORMS (Quickest) or via RDC to the Server itself.")
+			print("Navigate to the ACS Lite tab, select Manual Decommission then input the SID, Serial, Your operator name, Requester name (FSS, WWTS, etc) is fine")
+			print("Requester Department is the same as Requester name, and the Reason code for ALL Decommissions is C22 - Decommissioned: Technical Troubleshooting.")
+			print("Then Execute the process, allow for the server to respond, then copy the 'Successful Decommision' information into the service ticket for closure.")
 		else:
 			print(f"Processing KU Issue : {choice}")
 ############################################################### Submenu - IGT and XCI Issues.
 def igt_issues():
 	while True:
 		igt_banner = """
-		~~~
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		IGT and XCI Issues Submenu: 
 		[a] - IGT issue?
 		[b] - XCI issue?
 		exit - exit IGT/XCI Issues Submenu
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(igt_banner)
 		choice = input("-> IGT/XCI Issues --> Your selection: ")
@@ -179,15 +212,16 @@ def igt_issues():
 ############################################################### Submenu - Email Instruction Banner Only.
 def emailer():
 	email_banner = """
-	----------------------
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Generic Email Template
-	======================
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Instructions:
 	(1) Enter the Salesforce case # (If generated, if none, press 'Enter'),
 	(2) Enter the TEAM to contact (CNE-GW, SDG_Support, NI, Etc.)
 	(3) Paste the DEVICE affected (J2ALB047HPAIGW1104, j3yumpr01host01, Etc.)
 	(4) Paste the ALARM (Swap utilization, Critical Pings, GW Terminal Drops, Etc.)
 	This will generate a Subject line and a email body to send.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	"""
 	print(email_banner)
 ############################################################### Submenu - Email Template Generator
@@ -221,7 +255,7 @@ def template():
 def escalations():
 	while True:
 		escalations_banner = """
-		~~~
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		Escalation Path Submenu: 
 		[a] - SDG_Support
 		[b] - CNE_Team
@@ -232,6 +266,7 @@ def escalations():
 		[g] - HNSoc
 		[h] - NE
 		exit - exit Escalations Path Submenu
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(escalations_banner)
 		choice = input("-> Escalations Issues --> Your selection: ")
@@ -277,12 +312,13 @@ def escalations():
 def login_info():
 	while True:
 		login_banner = """
-		~~~
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		Login info Submenu: 
 		[a] - Jupiter 1 and 2
 		[b] - Ku | Terrestrial
 		[c] - Jupiter 3
 		exit - exit Login Info Submenu
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(login_banner)
 		choice = input("-> Login Info --> Your selection: ")
@@ -296,6 +332,7 @@ def login_info():
 			print(" hns-username:PIN+RSA")
 		elif choice.lower() == 'b':
 			print(f"\n --> {choice} - KU | Terrestrial")
+			print("For KU use the NOC_FORMS for Decommissions, and RDC into the specific servers for other issues. (ie: Timing and Power, etc.)")
 		elif choice.lower() == 'c':
 			print(f"\n --> {choice} - Jupiter 3")
 			print(" Your Assigned Jupiter3 username:password  ---> NOT PIN+RSA")
@@ -304,11 +341,17 @@ def login_info():
 ############################################################### Submenu - Site access requests and event summary
 def event_template():
 	while True:
+		template_banner = """
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Event Summary Template : Enter in information at the requested fields. 
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		"""
+		print(template_banner)
 		event_type = input("-> Event Type [Outage, Degradation, Investigation]: ")
-		start_date = input("-> Event Start DATE: [12/12/23] format ")
-		start_time = int(input("-> Event Start TIME: [ex: 1200] format "))
-		end_time = int(input("-> Event End TIME: [ex: 1400] format "))
-		end_date = input("-> Event End DATE: [12/12/23] ")
+		start_date = input("-> Event Start DATE [12/12/23]: ")
+		start_time = int(input("-> Event Start TIME [1200] 24 hour format: "))
+		end_date = input("-> Event End DATE [12/12/23]: ")
+		end_time = int(input("-> Event End TIME [1400] 24 hour format: "))
 		service_type = input("-> Service Type: [Transport, Ordering, Management] ")
 		cust_affected = input("-> Customers Affected: [SHP, CEN, OXY] ")
 		sites_affected = input(" -> Number of sites affected: ")
@@ -317,6 +360,7 @@ def event_template():
 		root_cause = input(" -> What was the Root cause for this issue?: ")
 		sw_vers = input(" -> What was the software version?: ")	
 		
+############# Time calculator
 		start_hour = start_time // 100
 		start_minute = start_time % 100
 		end_hour = end_time // 100
@@ -332,14 +376,14 @@ def event_template():
 
 		event_body = (
 		f"Event Type: {event_type},\n"
-		f"Event Duration: {start_date} ({start_time}) - {end_date} ({end_time}), Duration: [{total_duration_hours}H:{total_duration_minutes}M] \n"
-		f"Type of Service: {service_type}, \n"
-		f"Customers Affected: {cust_affected}, \n"
-		f"Numbers of sites: {sites_affected}, \n"
-		f"Alerts: {alerts}, \n"
-		f"Event Summary: {summary}, \n"
-		f"Root Cause: {root_cause}, \n"
-		f"S/W Version: {sw_vers}, \n"
+		f"Event Duration: {start_date} @ ({start_time}) - {end_date} @ ({end_time}), Duration: [{total_duration_hours}H:{total_duration_minutes}M] \n"
+		f"Type of Service: {service_type} \n"
+		f"Customers Affected: {cust_affected} \n"
+		f"Numbers of sites: {sites_affected} \n"
+		f"Alerts: {alerts} \n"
+		f"Event Summary: {summary} \n"
+		f"Root Cause: {root_cause} \n"
+		f"S/W Version: {sw_vers} \n"
 		)
 		
 		print("\nEvent Summary Template\n\n")
