@@ -1,4 +1,4 @@
-#!/bin/python3/venv .venv
+#!/bin/python3
 
 ############################################################### Intro Banner Only.
 def banner():
