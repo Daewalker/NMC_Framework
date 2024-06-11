@@ -1,5 +1,3 @@
-#!/bin/python3
-
 ############################################################### Intro Banner Only.
 def banner():
 	display_banner = """
