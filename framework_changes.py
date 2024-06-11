@@ -5,10 +5,9 @@ def banner():
 	display_banner = """
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Welcome to the NMC Assistance Framework.
-
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Instructions:
-	Make your selection at the prompts when requested
+	Make your selection at the prompts when requested, enjoy! :)
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	"""
 	print(display_banner)
@@ -26,9 +25,13 @@ def user_choice():
 	[6] - IGT and XCI
 	[7] - Escalation Paths 
 	[8] - Tool login info
-	[9] - Event Summary | Site Access request
+	[9] - Event Summary
+	[10] - Site Access request
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	Type 'exit' to exit program. 
+	Type 'exit' to exit program. Utilizing 'Ctrl+c' will break the script.
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	  Suggestions and input are always encouraged, please let me know if there are
+	 additional items that will assist any and all NMC newcomers and senior members
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	"""
 	print(second_banner)
@@ -41,13 +44,13 @@ def user_choice():
 def phone_calls():
 	phone_instruct = """
 	Gather the following:
-	-The name of the caller and where are they calling from? [ex: John from FSS]
-	-The SAN or SID of the device with the issue. (SAN = Jupiter; SID = KU)
-	-The SERIAL number for the device OR device(s)
-	-WHAT is the issue that is occuring? WHAT steps have been taken so far?
-	-Single site calls may have STATE CODES or NMS CODES.
-	-Create a ticket based on the provided information, then escalate to the 
-	proper resources (CNE-GW, FUSION, SDG_Support, NLV, Etc.),
+	  The name of the caller and where are they calling from? [ex: John from FSS]\n
+	  The SAN or SID of the device with the issue. (SAN = Jupiter; SID = KU)\n
+	  The SERIAL number for the device OR device(s)\n
+	  WHAT is the issue that is occuring? WHAT steps have been taken so far?\n
+	  Single site calls may have STATE CODES or NMS CODES.\n
+	  Create a ticket based on the provided information, then escalate to the 
+	  proper resources (CNE-GW, FUSION, SDG_Support, NLV, Etc.),
 	"""
 	print(phone_instruct) 
 ############################################################### Submenu - Jupiter 1 and 2 Issues. 
@@ -65,53 +68,53 @@ def jupiter1and2_issues():
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(jupiter_banner)
-		choice = input("-> Jupiter Issues --> Your selection: ")
+		choice = input("-> Jupiter Issues --> Your selection, Type 'exit' to return to the main menu: ")
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a': 	##########Single site calls
 			print(f"\n --> {choice} - Single site")
-			print("\nYou are likely on a phone call....")
-			print("\nGather the following during this call: ")
-			print("The site SAN, and the SERIAL numbers of the terminal(s) -> There may be more than one")
-			print("Log into DSS (hns-unsername:PIN+RSA) and navigate the sidebar to 'Jupiter Dashboard'")
-			print("Select 'Jupiter Dashboard', then enter the SAN or the ESN of the site into DSS to gather more information,")
-			print("such as, Radio_ESN, Gateway_IDs, Beam_IDs for your ticket and for engineers")
-			print("Depending on what the Single site issue is, this will affect your escalation path")
-			print("Is the terminal stuck in activation stages? -> Escalate to CNE-NMS")
-			print("Is the terminal within FAP? -> Escalate to the SDG_Support Team")
+			print("\n  You are likely on a phone call....")
+			print("\n  Gather the following during this call: ")
+			print("  The site SAN, and the SERIAL numbers of the terminal(s) -> There may be more than one")
+			print("  Log into DSS (hns-unsername:PIN+RSA) and navigate the sidebar to 'Jupiter Dashboard'")
+			print("  Select 'Jupiter Dashboard', then enter the SAN or the ESN of the site into DSS to gather more information,")
+			print("  such as, Radio_ESN, Gateway_IDs, Beam_IDs for your ticket and for engineers")
+			print("  Depending on what the Single site issue is, this will affect your escalation path")
+			print("  Is the terminal stuck in activation stages? -> Escalate to CNE-NMS")
+			print("  Is the terminal within FAP? -> Escalate to the SDG_Support Team")
 		elif choice.lower() == 'b':		##########Terminal Drops
 			print(f"\n --> {choice} - Terminal Drops")
-			print("Within the SL1 alarm, select the performance tab at the top of the window,")
-			print("Select the >Hughes Jupiter IGW menu and look for 'NumAsocTerminals'")
-			print("Note the number of terminals that are on the IPGW, should there be only a few registered Terminals on the IPGW")
-			print("Ask a senior collegue if the number of terminals on the GW is sufficent, if they are then ignore the alarm, if not create a  ticket and escalate")
+			print("  Within the SL1 alarm, select the performance tab at the top of the window,")
+			print("  Select the >Hughes Jupiter IGW menu and look for 'NumAsocTerminals'")
+			print("  Note the number of terminals that are on the IPGW, should there be only a few registered Terminals on the IPGW")
+			print("  Ask a senior collegue if the number of terminals on the GW is sufficent, if they are then ignore the alarm, if not create a  ticket and escalate")
 		elif choice.lower() == 'c':		##########BGP Peering
 			print(f"\n --> {choice} - BGP Peering Issues")
-			print("IF this is a Jupiter 3 alarm, check Ansible for circuit information, else continue....\n")
-			print(" Within SL1, note the interface and BGP neighbour")
-			print(" If the link is a backbone link to a carrier ISP,")
-			print(" then escalate to the appropriate carrier\n")
-			print(" Level3|CenturyLink|Lumen - Login portal")
-			print(" -> controlcenter.lumen.com/enterprise/dashboard\n")
+			print("  IF this is a Jupiter 3 alarm, check Ansible for circuit information, else continue....\n")
+			print("  Within SL1, note the interface and BGP neighbour")
+			print("  If the link is a backbone link to a carrier ISP,")
+			print("  then escalate to the appropriate carrier\n")
+			print("  Level3|CenturyLink|Lumen - Login portal")
+			print("  -> controlcenter.lumen.com/enterprise/dashboard\n")
 			print("```")
 			print("Verizon - Login Portal")
-			print(" -> enterprise.verizon.com/public/index.html#/repairsqf/tickets/find\n")
-			print("```")
-			print("\nGTT Communitcation - Login Portal")
-			print(" -> ethervision.gtt.net/sign-in\n")
-			print("```")
+			print("  -> enterprise.verizon.com/public/index.html#/repairsqf/tickets/find\n")
+			print("  ```")
+			print("\n  GTT Communitcation - Login Portal")
+			print("   -> ethervision.gtt.net/sign-in\n")
+			print("  ```")
 		elif choice.lower() == 'd':
 			print(f"\n --> {choice} - Move Allow Requests\n")
-			print("Teleperformance SHOULD have the ability to perform these moves.")
+			print("  Teleperformance SHOULD have the ability to perform these moves.")
 		elif choice.lower() == 'e':
 			print(f"\n --> {choice} - HTTP | DNS Failures\n")
-			print(" -Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
-			print(" -Browse to platform Jovian logging in with your creds.\n")
-			print(" -On the left hand sidebar, navigate to the platform affected,")
-			print(" -Select the 'GM' icon, locate your problem device likely an IGW,")
-			print(" -Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
-			print(" -Mgmt > Logs > CDT Log Display and select the log file.\n")
-			print(" -Analyze the log file for the FAILURE.")
+			print("  Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
+			print("  Browse to platform Jovian logging in with your creds.\n")
+			print("  On the left hand sidebar, navigate to the platform affected,")
+			print("  Select the 'GM' icon, locate your problem device likely an IGW,")
+			print("  Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
+			print("  Mgmt > Logs > CDT Log Display and select the log file.\n")
+			print("  Analyze the log file for the FAILURE.")
 			print("\n  ---> DNS_FAILURES | HTTPS_IP6_FAILURE")	
 		else:
 			print(f"Processing Jupiter 1/2 Issue : {choice}")
@@ -129,7 +132,7 @@ def jupiter3_issues():
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(jupiter3_banner)
-		choice = input("-> Jupiter 3 Issues --> Your selection: ")
+		choice = input("-> Jupiter 3 Issues --> Your selection, Type 'exit' to return to the main menu: ")
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a':
@@ -139,20 +142,20 @@ def jupiter3_issues():
 			print(f"\n --> {choice} - Terminal Drops\n")
 		elif choice.lower() == 'c':
 			print(f"\n --> {choice} - Terminal Move Allows\n")
-			print("Open Putty and 'ssh' into 172.16.193.11\n")
-			print("Login: nmcuser:nmcuser123!@#\n")
-			print("Type: './MoveAllowed.sh <DEVICE SAN>' then execute the script.\n")
-			print("Enter your Jupiter 3 Username and Passwords when prompted.")
-			print("A successful Move allow will state that the 'CTS for <DEVICE SAN> processed successfully.'")
+			print("  Open Putty and 'ssh' into 172.16.193.11\n")
+			print("  Login: nmcuser:nmcuser123!@#\n")
+			print("  Type: './MoveAllowed.sh <DEVICE SAN>' then execute the script.\n")
+			print("  Enter your Jupiter 3 Username and Passwords when prompted.")
+			print("  A successful Move allow will state that the 'CTS for <DEVICE SAN> processed successfully.'")
 		elif choice.lower() == 'd':
 			print(f"\n --> {choice} - HTTP | DNS Failures\n")
-			print(" -Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
-			print(" -Browse to platform Jovian logging in with your creds.\n")
-			print(" -On the left hand sidebar, navigate to the platform affected,")
-			print(" -Select the 'GM' icon, locate your problem device likely an IGW,")
-			print(" -Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
-			print(" -Mgmt > Logs > CDT Log Display and select the log file.\n")
-			print(" -Analyze the log file for the FAILURE.")
+			print("  Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
+			print("  Browse to platform Jovian logging in with your creds.\n")
+			print("  On the left hand sidebar, navigate to the platform affected,")
+			print("  Select the 'GM' icon, locate your problem device likely an IGW,")
+			print("  Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
+			print("  Mgmt > Logs > CDT Log Display and select the log file.\n")
+			print("  Analyze the log file for the FAILURE.")
 			print("\n  ---> DNS_FAILURES | HTTPS_IP6_FAILURE")
 		else:
 			print(f"Processing Jupiter 3 Issue : {choice}")
@@ -170,22 +173,35 @@ def ku_issues():
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(ku_banner)
-		choice = input("-> KU Issues --> Your selection: ")
+		choice = input("-> KU Issues --> Your selection, Type 'exit' to return to the main menu: ")
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a':
 			print(f"\n --> {choice} - Enterprise")
+			print("  Gather the information regarding the site.")
+			print("  Such as SiD | Serial | Error codes or messages ")
+			print("  Generate a Salesforce ticket, reach out to a senior collegue for clarity")
 		elif choice.lower() == 'b':
 			print(f"\n --> {choice} - Timing and Power")
+			print("  Gather the information from the technician, SiD and Serial")
+			print("  Log into the corresonding NOC Element Manager (National, Diversity(GTN, NLV), HX, Gilbert)")
+			print("  Open the RDP Connections.msc icon and select the corresonding DNCC")
+			print("  Go to the 'DNCC Logging' tab and then select the 'DNCC Transient Log' tab(Near the bottom of the window)")
+			print("  Right-click and select 'Ranging Filter', Select the 'Configuration' tab and note the Bandwidth Allocation: Inroute Groups,")
+			print("  Move to the 'General' tab and choose the [StartRange] from the drop-down menu, input the serial into the 'Serial No:' )field: ")
+			print("  Then input the Inroute group number in the 'Group' field, then click 'Send'.")
+			print("  Move back to the 'DNCC Logging' tab and note the information for the VSAT. Ask a senior collegue if the timing and power are sufficent ")
 		elif choice.lower() == 'c':
 			print(f"\n --> {choice} - VSAT down/Outage")
+			print("  Note the SID, Serials and other pertinent information(ie: Local weather, maintenances, power, etc.)")
+			print("  Generate a Salesforce ticket and look in the Project Management spreadsheet for the correct team to escalate to.")		
 		elif choice.lower() == 'd':
 			print(f"\n --> {choice} - Decommission Requests")
-			print("Gather the SID and Serial numbers of the terminal that is to be decommissioned.")
-			print("Log into the corresonding Vision server via NOC_FORMS (Quickest) or via RDC to the Server itself.")
-			print("Navigate to the ACS Lite tab, select Manual Decommission then input the SID, Serial, Your operator name, Requester name (FSS, WWTS, etc) is fine")
-			print("Requester Department is the same as Requester name, and the Reason code for ALL Decommissions is C22 - Decommissioned: Technical Troubleshooting.")
-			print("Then Execute the process, allow for the server to respond, then copy the 'Successful Decommision' information into the service ticket for closure.")
+			print("  Gather the SID and Serial numbers of the terminal that is to be decommissioned.")
+			print("  Log into the corresonding Vision server via NOC_FORMS (Quickest) or via RDC to the Server itself.")
+			print("  Navigate to the ACS Lite tab, select Manual Decommission then input the SID, Serial, Your operator name, Requester name (FSS, WWTS, etc) is fine")
+			print("  Requester Department is the same as Requester name, and the Reason code for ALL Decommissions is C22 - Decommissioned: Technical Troubleshooting.")
+			print("  Then Execute the process, allow for the server to respond, then copy the 'Successful Decommision' information into the service ticket for closure.")
 		else:
 			print(f"Processing KU Issue : {choice}")
 ############################################################### Submenu - IGT and XCI Issues.
@@ -200,7 +216,7 @@ def igt_issues():
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(igt_banner)
-		choice = input("-> IGT/XCI Issues --> Your selection: ")
+		choice = input("-> IGT/XCI Issues --> Your selection, Type 'exit' to return to the main menu: ")
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a':
@@ -234,12 +250,12 @@ def template():
 	
 		email_subject = f" {ticket_num} - {device_name} - {alarm_decription}"
 		email_body = (
-		f"Hello {team_name},\n\n"
-		f"This email is to provide visibility on {device_name}, which is currently alarming within SL1."
-		f"Alarm: {alarm_decription} \n\n\n"
-		f"Please take the required actions to address this issue and relay the corrective actions to the NMC\n"
-		f"Thank you very much!\n\n"
-		f"Regards,\n\n"
+		f"  Hello {team_name},\n\n"
+		f"  This email is to provide visibility on {device_name}, which is currently alarming within SL1."
+		f"  Alarm: {alarm_decription} \n\n\n"
+		f"  Please take the required actions to address this issue and relay the corrective actions to the NMC\n"
+		f"  Thank you very much!\n\n"
+		f"  Regards,\n\n"
 		)
 		
 		print("\nEmail Subject and Body\n\n")
@@ -269,7 +285,7 @@ def escalations():
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(escalations_banner)
-		choice = input("-> Escalations Issues --> Your selection: ")
+		choice = input("-> Escalations Issues --> Your selection, Type 'exit' to return to the main menu: ")
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a':
@@ -321,7 +337,7 @@ def login_info():
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
 		print(login_banner)
-		choice = input("-> Login Info --> Your selection: ")
+		choice = input("-> Login Info --> Your selection, Type 'exit' to return to the main menu: ")
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a':
@@ -375,15 +391,15 @@ def event_template():
 		total_duration_minutes %= 60
 
 		event_body = (
-		f"Event Type: {event_type},\n"
-		f"Event Duration: {start_date} @ ({start_time}) - {end_date} @ ({end_time}), Duration: [{total_duration_hours}H:{total_duration_minutes}M] \n"
-		f"Type of Service: {service_type} \n"
-		f"Customers Affected: {cust_affected} \n"
-		f"Numbers of sites: {sites_affected} \n"
-		f"Alerts: {alerts} \n"
-		f"Event Summary: {summary} \n"
-		f"Root Cause: {root_cause} \n"
-		f"S/W Version: {sw_vers} \n"
+		f"  Event Type: {event_type},\n"
+		f"  Event Duration: {start_date} @ ({start_time}) - {end_date} @ ({end_time}), Duration: [{total_duration_hours}H:{total_duration_minutes}M] \n"
+		f"  Type of Service: {service_type} \n"
+		f"  Customers Affected: {cust_affected} \n"
+		f"  Numbers of sites: {sites_affected} \n"
+		f"  Alerts: {alerts} \n"
+		f"  Event Summary: {summary} \n"
+		f"  Root Cause: {root_cause} \n"
+		f"  S/W Version: {sw_vers} \n"
 		)
 		
 		print("\nEvent Summary Template\n\n")
@@ -394,6 +410,52 @@ def event_template():
 			break
 		else:
 			print(f"Processing Event Summary Template : {choice}")
+###############################################################
+def site_access():
+	while True:
+		event_site_banner = """
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		Site Access Request Template
+		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		"""
+		requester = input("Who requested the site access: ")
+		visitor = input("Who is the visitor: ")
+		req_comp = input("What company is the requester from: ")
+		vist_comp = input("What company is the visitor from: ")
+		req_phone = input("What is the requesters phone number: ")
+		visit_phone = input("What is the visitors phone number: ")
+		req_date = input("Date of request: ")
+		visit_citizen = input("What citizenship does the visitor hold: ")
+		arrival_date = input("When will the visitor arrive: ")
+		depart_date = input("When will the visitor depart: ")
+		equip_check = input("Is equipment being sent to the site: ")
+		visit_purpose = input("What is the purpose of the visit: ")
+		smarthands = input("Is Smarthands required to be dispatched: ")
+		###
+		requesting_info = (
+		f"\n  Now cut and paste this into a site access request ticket.\n"
+		f"\n  Requester name: {requester}\n"		
+		f"  Visitor name: {visitor}\n"
+		f"  Requesting company: {req_comp}\n"
+		f"  Visitor company: {vist_comp}\n"
+		f"  Requester phone number: {req_phone}\n"
+		f"  Visitor phone number: {visit_phone}\n"
+		f"  Date of request: {req_date}\n"
+		f"  Citizenship of Visitor: {visit_citizen}\n"
+		f"  Arrival Date: {arrival_date}\n"
+		f"  Departure Date: {depart_date}\n"
+		f"  Is equipment being sent to the site: {equip_check}\n"
+		f"  Purpose of the visit: {visit_purpose}\n"
+		f"  Smarthands: {smarthands}\n\n"
+		)
+		###
+		print(requesting_info)
+
+		choice = input("-> Site Access Template finished --> Type 'exit' to return to main menu, Press 'Enter' to process another event summary: ")
+		if choice.lower() == 'exit':
+			break
+		else:
+			print(f"Processing Site Access Request Template : {choice}")
 
 ############################################################### Main function
 def main():
@@ -422,6 +484,8 @@ def main():
 			login_info()
 		elif choice == 9:
 			event_template()
+		elif choice == 10:
+			site_access()
 		else:
 			print("Processing bases on your choice -> ", choice)
 ############################################################### Init
