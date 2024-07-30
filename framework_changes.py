@@ -73,13 +73,13 @@ def jupiter1and2_issues():
 			print(f"\n --> {choice} - Single site")
 			print("\n  You are likely on a phone call....")
 			print("\n  Gather the following during this call: ")
-			print("  The site SAN, and the SERIAL numbers of the terminal(s) -> There may be more than one")
-			print("  Log into DSS (hns-unsername:PIN+RSA) and navigate the sidebar to 'Jupiter Dashboard'")
-			print("  Select 'Jupiter Dashboard', then enter the SAN or the ESN of the site into DSS to gather more information,")
-			print("  such as, Radio_ESN, Gateway_IDs, Beam_IDs for your ticket and for engineers")
-			print("  Depending on what the Single site issue is, this will affect your escalation path")
-			print("  Is the terminal stuck in activation stages? -> Escalate to CNE-NMS")
-			print("  Is the terminal within FAP? -> Escalate to the SDG_Support Team")
+			print("1.  The site SAN, and the SERIAL numbers of the terminal(s) -> There may be more than one")
+			print("2.  Log into DSS (hns-unsername:PIN+RSA) and navigate the sidebar to 'Jupiter Dashboard'")
+			print("3.  Select 'Jupiter Dashboard', then enter the SAN or the ESN of the site into DSS to gather more information,")
+			print("4.  such as, Radio_ESN, Gateway_IDs, Beam_IDs for your ticket and for engineers")
+			print("5.  Depending on what the Single site issue is, this will affect your escalation path")
+			print("6.  Is the terminal stuck in activation stages? -> Escalate to CNE-NMS")
+			print("7.  Is the terminal within FAP? -> Escalate to the SDG_Support Team")
 		elif choice.lower() == 'b':		##########Terminal Drops
 			print(f"\n --> {choice} - Terminal Drops")
 			print("  Within the SL1 alarm, select the performance tab at the top of the window,")
@@ -106,13 +106,13 @@ def jupiter1and2_issues():
 			print("  Teleperformance SHOULD have the ability to perform these moves.")
 		elif choice.lower() == 'e':
 			print(f"\n --> {choice} - HTTP | DNS Failures\n")
-			print("  Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
-			print("  Browse to platform Jovian logging in with your creds.\n")
-			print("  On the left hand sidebar, navigate to the platform affected,")
-			print("  Select the 'GM' icon, locate your problem device likely an IGW,")
-			print("  Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
-			print("  Mgmt > Logs > CDT Log Display and select the log file.\n")
-			print("  Analyze the log file for the FAILURE.")
+			print("1.  Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
+			print("2.  Browse to platform Jovian logging in with your creds.\n")
+			print("3.  On the left hand sidebar, navigate to the platform affected,")
+			print("4.  Select the 'GM' icon, locate your problem device likely an IGW,")
+			print("5.  Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
+			print("6.  Mgmt > Logs > CDT Log Display and select the log file.\n")
+			print("7.  Analyze the log file for the FAILURE.")
 			print("\n  ---> DNS_FAILURES | HTTPS_IP6_FAILURE")	
 		else:
 			print(f"Processing Jupiter 1/2 Issue : {choice}")
@@ -140,21 +140,20 @@ def jupiter3_issues():
 			print(f"\n --> {choice} - Terminal Drops\n")
 		elif choice.lower() == 'c':
 			print(f"\n --> {choice} - Terminal Move Allows\n")
-			print("  Open Putty and 'ssh' into 172.16.193.11\n")
-			print("  Login: nmcuser:nmcuser123!@#\n")
-			print("  Type: './MoveAllowed.sh <DEVICE SAN>' then execute the script.\n")
-			print("  Enter your Jupiter 3 Username and Passwords when prompted.")
-			print("  A successful Move allow will state that the 'CTS for <DEVICE SAN> processed successfully.'")
+			print("1.  Open Putty and 'ssh' into 172.16.193.11\n")
+			print("2.  Login: nmcuser:nmcuser123!@#\n")
+			print("3.  Type: './MoveAllowed.sh <DEVICE SAN>' then execute the script.\n")
+			print("4.  Enter your Jupiter 3 Username and Passwords when prompted.")
+			print("5.  A successful Move allow will state that the 'CTS for <DEVICE SAN> processed successfully.'")
 		elif choice.lower() == 'd':
 			print(f"\n --> {choice} - HTTP | DNS Failures\n")
-			print("  Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
-			print("  Browse to platform Jovian logging in with your creds.\n")
-			print("  On the left hand sidebar, navigate to the platform affected,")
-			print("  Select the 'GM' icon, locate your problem device likely an IGW,")
-			print("  Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
-			print("  Mgmt > Logs > CDT Log Display and select the log file.\n")
-			print("  Analyze the log file for the FAILURE.")
-			print("\n  ---> DNS_FAILURES | HTTPS_IP6_FAILURE")
+			print("1.  Note the Platform and Gateway (YUM,BIL,J2CHY,J2MIS)")
+			print("2.  Browse to platform Jovian logging in with your creds.\n")
+			print("3.  On the left hand sidebar, navigate to the platform affected,")
+			print("4.  Select the 'GM' icon, locate your problem device likely an IGW,")
+			print("5.  Select the 'Device Web GUI' icon, on the left sidebar, navigate to,")
+			print("6.  Mgmt > Logs > CDT Log Display and select the log file.\n")
+			print("7.  Analyze the log file for the FAILURE.")
 		else:
 			print(f"Processing Jupiter 3 Issue : {choice}")
 ############################################################### Submenu - KU Issues.
@@ -167,6 +166,7 @@ def ku_issues():
 		[b] - Timing and power
 		[c] - VSAT down/Outage
 		[d] - Decommission Requests
+		[e] - CAC Key Upload fix
 		exit - exit KU Issues Submenu
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
@@ -175,31 +175,45 @@ def ku_issues():
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a':
-			print(f"\n --> {choice} - Enterprise")
+			print(f"\n --> {choice} - Enterprise\n")
 			print("  Gather the information regarding the site.")
 			print("  Such as SiD | Serial | Error codes or messages ")
 			print("  Generate a Salesforce ticket, reach out to a senior collegue for clarity")
 		elif choice.lower() == 'b':
-			print(f"\n --> {choice} - Timing and Power")
-			print("  Gather the information from the technician, SiD and Serial")
-			print("  Log into the corresonding NOC Element Manager (National, Diversity(GTN, NLV), HX, Gilbert)")
-			print("  Open the RDP Connections.msc icon and select the corresonding DNCC")
-			print("  Go to the 'DNCC Logging' tab and then select the 'DNCC Transient Log' tab(Near the bottom of the window)")
-			print("  Right-click and select 'Ranging Filter', Select the 'Configuration' tab and note the Bandwidth Allocation: Inroute Groups,")
-			print("  Move to the 'General' tab and choose the [StartRange] from the drop-down menu, input the serial into the 'Serial No:' )field: ")
-			print("  Then input the Inroute group number in the 'Group' field, then click 'Send'.")
-			print("  Move back to the 'DNCC Logging' tab and note the information for the VSAT. Ask a senior collegue if the timing and power are sufficent ")
+			print(f"\n --> {choice} - Timing and Power\n")
+			print("1.  Gather the information from the technician, SiD and Serial")
+			print("2.  Log into the corresonding NOC Element Manager (National, Diversity(GTN, NLV), HX, Gilbert)")
+			print("3.  Open the RDP Connections.msc icon and select the corresonding DNCC")
+			print("4.  Go to the 'DNCC Logging' tab and then select the 'DNCC Transient Log' tab(Near the bottom of the window)")
+			print("5.  Right-click and select 'Ranging Filter', Select the 'Configuration' tab and note the Bandwidth Allocation: Inroute Groups,")
+			print("6.  Move to the 'General' tab and choose the [StartRange] from the drop-down menu, input the serial into the 'Serial No:' )field: ")
+			print("7.  Then input the Inroute group number in the 'Group' field, then click 'Send'.")
+			print("8.  Move back to the 'DNCC Logging' tab and note the information for the VSAT. Ask a senior collegue if the timing and power are sufficent ")
 		elif choice.lower() == 'c':
-			print(f"\n --> {choice} - VSAT down/Outage")
+			print(f"\n --> {choice} - VSAT down/Outage\n")
 			print("  Note the SID, Serials and other pertinent information(ie: Local weather, maintenances, power, etc.)")
 			print("  Generate a Salesforce ticket and look in the Project Management spreadsheet for the correct team to escalate to.")		
 		elif choice.lower() == 'd':
-			print(f"\n --> {choice} - Decommission Requests")
-			print("  Gather the SID and Serial numbers of the terminal that is to be decommissioned.")
-			print("  Log into the corresonding Vision server via NOC_FORMS (Quickest) or via RDC to the Server itself.")
-			print("  Navigate to the ACS Lite tab, select Manual Decommission then input the SID, Serial, Your operator name, Requester name (FSS, WWTS, etc) is fine")
-			print("  Requester Department is the same as Requester name, and the Reason code for ALL Decommissions is C22 - Decommissioned: Technical Troubleshooting.")
-			print("  Then Execute the process, allow for the server to respond, then copy the 'Successful Decommision' information into the service ticket for closure.")
+			print(f"\n --> {choice} - Decommission Requests\n")
+			print("1.  Gather the SID and Serial numbers of the terminal that is to be decommissioned.")
+			print("2.  Log into the corresonding Vision server via NOC_FORMS (Quickest) or via RDC to the Server itself.")
+			print("3.  Navigate to the ACS Lite tab, select Manual Decommission then input the SID, Serial, Your operator name, Requester name (FSS, WWTS, etc) is fine")
+			print("4.  Requester Department is the same as Requester name, and the Reason code for ALL Decommissions is C22 - Decommissioned: Technical Troubleshooting.")
+			print("5.  Then Execute the process, allow for the server to respond, then copy the 'Successful Decommision' information into the service ticket for closure.")
+		elif choice.lower() == 'e':
+			print(f"\n --> {choice} - CAC Key Upload fix\n")
+			print("1.  Go to Sharepoint and search for CAC Key Generator.")
+			print("2.  Log into the correct NOC to assist [National, Diversity, Etc.]")
+			print("3.  Enter the NOC ID [National = 5 and Dedicated= 2]")
+			print("4.  Select the 'KU' option.")
+			print("5.  Enter site serial number and click 'Retrieve Keys'. There will be TWO files generated, a .nak and .ask files.")
+			print("6.  In SL1, search for ac3gemcac01 gather the IP address from this device and RDP into the box.")
+			print("7.  Open File Explorer and navigate to C:\CAC\Keys.")
+			print("8.  Copy the information within the filea, then locate the files that has been recently changed within the directory.")
+			print("9.  Within the CLI, type: nakload 3419707.e02 l  | -> Command to use: [nakload <filename> l]")
+			print("10.  You should see output that indicates a file change being completed.")
+			print("11. While still in C:\CAC\keys, type askload 3419707.ask l [askload <filename> l].")
+			print("12. Similar output from above should indicate a successful CAC key upload.")
 		else:
 			print(f"Processing KU Issue : {choice}")
 ############################################################### Submenu - IGT and XCI Issues.
@@ -208,8 +222,9 @@ def igt_issues():
 		igt_banner = """
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		IGT and XCI Issues Submenu: 
-		[a] - IGT issue?
-		[b] - XCI issue?
+		[a] - IGT DHCP Pool Purge
+		[b] - IGT Site is not taking Download
+		[c] - XCI issue
 		exit - exit IGT/XCI Issues Submenu
 		~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		"""
@@ -218,9 +233,28 @@ def igt_issues():
 		if choice.lower() == 'exit':
 			break
 		elif choice.lower() == 'a':
-			print(f"\n --> {choice} - IGT Issues")
+			print(f"\n --> {choice} - IGT Issues\n")
+			print("1. IGT NOC Vision DHCP Pool Purge.")
+			print("2. Log into the NOC_'x' Vision box.")
+			print("3. Search in the startmenu for 'Telnet <ip>'. Replace <ip> with the IP address to connect to." )
+			print("4. Using the following: brighton:swordfish to gain access.")
+			print("5. Within the CLI type: cd '/cfg0/'")
+			print("6. ls -lta")
+			print("7. rm 'dhcpsact.txt'")
+			print("8. ls -lta -> Should no longer display the dhcp file. ")
 		elif choice.lower() == 'b':
-			print(f"\n --> {choice} - XCI Issues")
+			print(f"\n --> {choice} - IGT site Download Issue.\n")
+			print("1. Log into the UEMVision box and open the 'Task Manager', and navigate to the 'Services' tab.")
+			print("2. Look for these 3 services that need to be restarted: ")
+			print("   JservicesFGN - JservicesGENSDL - JservicesGENSDL MGR\n")
+			print("3. If the NOC_View and Satellite Router View are not loading:")
+			print("   Restart the service: ")
+			print("   JservicesTOPO\n")
+		elif choice.lower() == 'c':
+			print(f"\n --> {choice} - XCI Issues\n")
+			print("Typically, issues with XCI are 'seen' via the SL1 board OR via emails from Dhruval.")
+			print("Create a ticket with the information provided by Dhurval or SL1.")
+			print("Escalate the issue to XCI_Support engineers, and follow up until case is resolved. ")
 		else:
 			print(f"Processing IGT/XCI Issue : {choice}")
 ############################################################### Submenu - Email Instruction Banner Only.
@@ -230,10 +264,10 @@ def emailer():
 	Generic Email Template
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Instructions:
-	(1) Enter the Salesforce case # (If generated, if none, press 'Enter'),
-	(2) Enter the TEAM to contact (CNE-GW, SDG_Support, NI, Etc.)
-	(3) Paste the DEVICE affected (J2ALB047HPAIGW1104, j3yumpr01host01, Etc.)
-	(4) Paste the ALARM (Swap utilization, Critical Pings, GW Terminal Drops, Etc.)
+	1. Enter the Salesforce case # (If generated, if none, press 'Enter'),
+	2. Enter the TEAM to contact (CNE-GW, SDG_Support, NI, Etc.)
+	3. Paste the DEVICE affected (J2ALB047HPAIGW1104, j3yumpr01host01, Etc.)
+	4. Paste the ALARM (Swap utilization, Critical Pings, GW Terminal Drops, Etc.)
 	This will generate a Subject line and a email body to send.
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	"""
@@ -248,12 +282,12 @@ def template():
 	
 		email_subject = f" {ticket_num} - {device_name} - {alarm_decription}"
 		email_body = (
-		f"  Hello {team_name},\n\n"
-		f"  This email is to provide visibility on {device_name}, which is currently alarming within SL1."
-		f"  Alarm: {alarm_decription} \n\n\n"
-		f"  Please take the required actions to address this issue and relay the corrective actions to the NMC\n"
-		f"  Thank you very much!\n\n"
-		f"  Regards,\n\n"
+		f" Hello {team_name},\n\n"
+		f" This email is to provide visibility on {device_name}, which is currently alarming within SL1."
+		f" Alarm: {alarm_decription}. \n\n\n"
+		f" Please, when possible, could we investigate this issue and reply back to this email chain for visibility into this event.\n"
+		f" Thank you.\n\n"
+		f" Regards,\n\n"
 		)
 		
 		print("\nEmail Subject and Body\n\n")
